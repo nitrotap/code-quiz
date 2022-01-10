@@ -1,10 +1,10 @@
 var timerEl = document.querySelector("#timer");
 
-time = 5;
+time = 90;
 var timer = function () {
   if (time > 0) {
     time--;
-    timerEl.innerHTML = "<h2>Time: <h2>" + time;
+    timerEl.innerHTML = time;
   } else {
     clearInterval(timer);
   }
