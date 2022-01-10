@@ -36,7 +36,7 @@ header {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-image: url("../images/mt-background-4.png");
+  /*background-image: url("../images/mt-background-4.png");*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
