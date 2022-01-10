@@ -1,13 +1,17 @@
 var timerEl = document.querySelector("#timer");
 
-var time = 90;
-var timer = function() {
-    if (time > 0) {
-        clearInterval(timer);
-    }
-    time -= 1;
-    console.log(time);
-    timerEl.innerHTML = time;
-}
+time = 5;
+var timer = function () {
+  if (time > 0) {
+    time--;
+    timerEl.innerHTML = "<h2>Time: <h2>" + time;
+  } else {
+    clearInterval(timer);
+  }
+};
 
-var countdownTimer = setInterval(timer, 1000);
+var countdown = function () {
+  var intervalID = setInterval(timer, 1000);
+};
+
+countdown();
