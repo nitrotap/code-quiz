@@ -1,0 +1,165 @@
+:root {
+  /* insert variables here*/
+  --primary-color: #14213d;
+
+  --secondary-rgb: rgb(192, 235, 178);
+
+  --secondary-color: rgb(255, 255, 255);
+
+  --tertiary-rgb: rgb(65, 128, 45);
+  --tertiary-color: #2d4780;
+
+  --quaternary-color: rgba(88, 75, 67, 0.678);
+
+  --hover-color: rgb(224, 224, 224);
+}
+
+* {
+  /* all element styles here */
+  box-sizing: border-box;
+
+  border-radius: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* body element styles*/
+  color: var(--primary-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-image: url("../images/mt-background-4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: center;
+  z-index: 9999;
+  margin: 0 auto 35px auto;
+  padding: 20px;
+  background-color: rgb(1, 1, 1, 0);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  background-color: rgb(1, 1, 1, 0);
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  background-color: rgb(1, 1, 1, 0);
+}
+
+header nav ul li a {
+  padding: 20px 20px;
+  font-size: calc(16px + 0.55vw);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: var(--secondary-color);
+  background-color: rgb(74, 76, 79, 0.5);
+  text-decoration: none;
+  margin: 10px;
+}
+
+header nav ul li a:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 15px;
+  text-shadow: none;
+  border: var(--primary-color) solid 3px;
+  transition: all 0.5s ease;
+}
+
+header h1 {
+  background-color: rgb(1, 1, 1, 0);
+}
+
+header h1 a {
+  font-weight: bold;
+  font-size: calc(36px + 0.75vw);
+  color: var(--secondary-color);
+  margin: 20px;
+  padding: 10px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgb(74, 76, 79, 0.1);
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 15px;
+  text-shadow: none;
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+
+/* START utility styles */
+.flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.shadow {
+  background-color: rgb(255, 204, 141, 0.3);
+  background-color: #14213d;
+}
+/* END utility styles */
+
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 980px) {
+  header {
+    padding-bottom: 0;
+    justify-content: center;
+    padding: 5px 5px;
+    padding-bottom: 25px;
+    margin: 0px;
+  }
+
+  header h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  header nav ul {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  header nav ul li a {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+}
