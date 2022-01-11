@@ -25,10 +25,11 @@ var startScreen = function() {
 }
 
 var question1 = function() {
+    countdown();
     console.log("question 1");
     titleEl.innerHTML = "<h1>Question 1: Question Here!<h1>";
     subTitleEl.remove();
-    
+
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -39,6 +40,7 @@ var question1 = function() {
 
 
 var quiz = function() {
+    countdown();
     question1();
 }
 
