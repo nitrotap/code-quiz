@@ -142,13 +142,38 @@ header h1 a:hover {
   font-weight: bold;
 }
 
-#start-button {
+#start-button, .form-button {
   padding: 20px;
   margin: 0 auto 35px auto;
   font-size: calc(24px + 0.55vw);
   display: flex;
   justify-content: center;
   font-weight: bold;
+}
+
+.submit-form {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.submit-form-button {
+  padding: 20px;
+  margin-left: 25px;
+  font-size: calc(24px + 0.55vw);
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.submit-text {
+  margin-right: 20px;
+  padding: 20px;
+}
+
+.submit-form-input {
+  font-size: calc(24px + 0.55vw);
+  padding: 20px;
 }
 
 .timer {

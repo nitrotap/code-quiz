@@ -246,6 +246,7 @@ var question5 = function() {
 }
 
 var highScores = function() {
+    event.preventDefault();
     // capture time remaining
     timeScore = time;
     titleEl.textContent = "All done!";
@@ -264,9 +265,45 @@ var highScores = function() {
         score = 0;
     }
 
-    subTitleEl.textContent = "Your final score is: " + score;
+    subTitleEl.textContent = "Your final score is: " + score + "\n"
+    + "Your penalty is: " + timePenalty;
     titleEl.appendChild(subTitleEl);
+
+
+    var submitFormEl = document.createElement("div");
+    submitFormEl.className = "submit-form";
+    var submitFormTextEl = document.createElement("h3");
+    submitFormTextEl.className = "submit-text";
+    submitFormTextEl.textContent = "Enter Initials: ";
+    var submitFormInputEl = document.createElement("input");
+    submitFormInputEl.type = "text";
+    submitFormInputEl.placeholder = "Enter Initials Here."
+    submitFormInputEl.name = "submit-form-input";
+    submitFormInputEl.className = "submit-form-input";
+    var submitFormButtonEl = document.createElement("button");
+    submitFormButtonEl.className = "submit-form-button";
+    submitFormButtonEl.textContent = "Submit";
+    submitFormEl.appendChild(submitFormTextEl);
+    submitFormEl.appendChild(submitFormInputEl);
+    submitFormEl.appendChild(submitFormButtonEl);
+
+    subTitleEl.appendChild(submitFormEl);
+
+    submitFormButtonEl.addEventListener("click", function() {
+        // read input from input textarea
+        userName = submitFormInputEl.value;
+        console.log(userName);
+        // when i click submit, save user name and score into localstorage
+
+        scoreArray = new Array();
+
+
+    });
+
 }
+
+
+
 
 var rightAnswer = function () {
     answers.push("right");
