@@ -1,13 +1,39 @@
+var time = 91;
 var timerEl = document.querySelector("#timer");
-var time = 90;
+timerEl.className = "timer";
+var timerRowEl = document.querySelector("#timer-row");
 var titleEl = document.querySelector("#main-title");
+titleEl.className = "title-element";
 var subTitleEl = document.querySelector("#sub-title");
 var startButtonEl = document.querySelector("#start-button");
 
-var timer = function (seconds) {
+var answerBox = document.createElement("div");
+answerBox.className = "answers";
+
+var answer1 = document.createElement("button");
+answer1.textContent = "first Answer";
+
+var answer2 = document.createElement("button");
+answer2.textContent = "second Answer";
+
+var answer3 = document.createElement("button");
+answer3.textContent = "third Answer";
+
+var answer4 = document.createElement("button");
+answer4.textContent = "fourth Answer";
+
+answerBox.appendChild(answer1);
+answerBox.appendChild(answer2);
+answerBox.appendChild(answer3);
+answerBox.appendChild(answer4);
+
+
+
+
+var timer = function () {
     if (time > 0) {
         time--;
-        timerEl.innerHTML = time;
+        timerEl.innerHTML = time + "s";
     } else {
         clearInterval(timer);
     }
@@ -18,24 +44,32 @@ var countdown = function () {
 };
 
 var startScreen = function() {
-    titleEl.innerHTML = "<h1>Coding Quiz Challenge<h1>";
-    subTitleEl.innerHTML = "<h3> A simple coding quiz to test your coding knowledge!</h3>";
-    startButtonEl.innerHTML = "<h2>Start Quiz</h2>";
-    startButtonEl.addEventListener("click", question1);
+    titleEl.textContent = "Coding Quiz Challenge";
+    subTitleEl.textContent = "A simple coding quiz to test your coding knowledge!";
+    startButtonEl.innerHTML = "Start Quiz";
+    startButtonEl.addEventListener("click", function() {
+        countdown();
+        question1();
+        subTitleEl.remove();
+        startButtonEl.remove();
+    
+    });
 }
 
 var question1 = function() {
-    countdown();
     console.log("question 1");
-    titleEl.innerHTML = "<h1>Question 1: Question Here!<h1>";
-    subTitleEl.remove();
+    titleEl.textContent = "Commonly used data types do not include:";
+    answer1.textContent = "strings";
+    answer2.textContent = "booleans";
+    answer3.textContent = "alerts";
+    answer4.textContent = "numbers";
+    titleEl.appendChild(answerBox);
+    answer1.addEventListener("click", question2);
+}
 
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "the answer is here";
+var question2 = function() {
+    console.log("question 2");
 
-    
 }
 
 
