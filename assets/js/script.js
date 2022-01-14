@@ -294,8 +294,6 @@ var highScores = function () {
         // read input from input textarea
         playerName = submitFormInputEl.value;
         console.log(playerName);
-
-        //scoreJSON = JSON.stringify(score);
         scores = {};
 
         // read from local storage
@@ -304,20 +302,33 @@ var highScores = function () {
 
         if (oldScores === null) {
             console.log("no other scores found!");
-
             scores[playerName] = score;
             localStorage.setItem("scores", JSON.stringify(scores));
             // console.log(localStorage.setItem("scores", JSON.stringify(scores)));
         } else {
             console.log("other scores found!");
-            var scores = JSON.parse(oldScores);
-            console.log(scores);
-            console.log(playerName);
+            scores = JSON.parse(oldScores);
             scores[playerName] = score;
-            console.log("new array: " + JSON.stringify(scores));
             localStorage.setItem("scores", JSON.stringify(scores));
+
+            var highScoresEl = document.createElement("div");
+            highScoresEl.className = "";
+
+            console.log(scores);
+
+            var strContent = "";
+            for (let i = 0; i < scores.length; i++) {
+                strContent += scores.id;
+            }
+            
+            highScoresEl.innerText = JSON.stringify(scores);
+            subTitleEl.appendChild(highScoresEl);
         }
     });
+
+
+
+
 }
 
 var rightAnswer = function () {
