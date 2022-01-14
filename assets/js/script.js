@@ -318,7 +318,7 @@ var highScores = function () {
 
             console.log(scores);
 
-            var text = "Player : Score";
+            var text = "";
             var text1 = JSON.stringify(scores, null, '\t');
             var text = text + text1;
 

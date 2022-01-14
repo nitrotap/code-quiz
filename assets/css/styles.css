@@ -42,7 +42,7 @@ header {
   background-position-y: center;
   background-position-x: center;
   z-index: 9999;
-  margin: 0 auto 35px auto;
+  margin: 0 auto 5px auto;
   padding: 20px;
   background-color: rgb(1, 1, 1, 0);
 }
@@ -115,9 +115,9 @@ header h1 a:hover {
 
 .answers button {
   padding: 20px;
-  margin: 0 0 35px 0;
-  font-size: calc(16px + 1.05vw);
-  width: 400px;
+  margin: 0 0 15px 0;
+  font-size: calc(16px + 0.55vw);
+  width: 200px;
 }
 
 .answers button:hover {
@@ -138,7 +138,6 @@ header h1 a:hover {
   padding: 20px;
   margin: 0 auto 35px auto;
   text-align: center;
-  width: 70%;
 }
 
 #main-title.question-title {
@@ -227,6 +226,7 @@ header h1 a:hover {
 .time {
   padding-right: 20px;
   font-size: calc(22px + 0.55vw);
+  background-color: var(--secondary-color);
 }
 
 /* START footer styles */
