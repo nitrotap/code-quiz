@@ -323,11 +323,17 @@ var highScores = function () {
             var text = text.replace(/[{}]/g, ' ');
             var text = text.replace(/"/g, '   ');
             var text = text.replace(/,/g, '');
+            var text = text.replace(/:/g, ' - ');
     
             highScoresEl.innerText = text;
+            submitFormEl.remove();
+            subTitleEl.textContent = " High Scores: ";
             subTitleEl.appendChild(highScoresEl);
             this.removeEventListener("click", handler);
         }
+
+
+        
     });
 
 
