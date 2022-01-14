@@ -4,8 +4,6 @@ var timerEl = document.querySelector("#timer");
 timerEl.className = "timer";
 
 var titleEl = document.querySelector("#main-title");
-titleEl.className = "title-element";
-
 var timerRowEl = document.querySelector("#timer-row");
 var subTitleEl = document.querySelector("#sub-title");
 var startButtonEl = document.querySelector("#start-button");
@@ -56,6 +54,8 @@ var question1 = function () {
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
+
+    titleEl.className = "question-title";
     titleEl.textContent = "Commonly used data types do NOT include:";
     answer1.textContent = "strings";
     answer2.textContent = "booleans";
@@ -250,7 +250,7 @@ var highScores = function () {
     // capture time remaining
     timeScore = time;
     titleEl.textContent = "All done!";
-
+    titleEl.className = "end-title";
     var score = 0;
     // score is timeScore - (#ofincorrects)*10
     var timePenalty = 0;
@@ -265,8 +265,10 @@ var highScores = function () {
         score = 0;
     }
 
-    subTitleEl.textContent = "Your final score is: " + score + "\n"
-        + "Your penalty is: " + timePenalty;
+    //subTitleEl.textContent = "Your final score is: " + score + "\n"
+   //     + "Your penalty is: " + timePenalty;
+
+    subTitleEl.textContent = "Your final score is: " + score;
     titleEl.appendChild(subTitleEl);
 
 
@@ -315,7 +317,7 @@ var highScores = function () {
             highScoresEl.className = "high-scores";
 
             console.log(scores);
-            
+
             var text = "Player : Score";
             var text1 = JSON.stringify(scores, null, '\t');
             var text = text + text1;
@@ -324,7 +326,7 @@ var highScores = function () {
             var text = text.replace(/"/g, '   ');
             var text = text.replace(/,/g, '');
             var text = text.replace(/:/g, ' - ');
-    
+
             highScoresEl.innerText = text;
             submitFormEl.remove();
             subTitleEl.textContent = " High Scores: ";
@@ -333,7 +335,7 @@ var highScores = function () {
         }
 
 
-        
+
     });
 
 

@@ -88,12 +88,12 @@ header h1 {
 
 header h1 a {
   font-weight: bold;
-  font-size: calc(36px + 0.75vw);
+  font-size: calc(24px + 0.75vw);
   color: var(--secondary-color);
   margin: 20px;
   padding: 10px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: rgb(74, 76, 79, 0.1);
+  background-color: rgb(74, 76, 79, 0.5);
   text-decoration: none;
 }
 
@@ -110,13 +110,14 @@ header h1 a:hover {
   display: flex;
   flex-direction: column;
   padding-top: 35px;
+  align-content: baseline;
 }
 
 .answers button {
   padding: 20px;
-  margin: 0 auto 35px auto;
-  font-size: calc(16px + 1.55vw);
-  width: 40%;
+  margin: 0 0 35px 0;
+  font-size: calc(16px + 1.05vw);
+  width: 400px;
 }
 
 .answers button:hover {
@@ -137,15 +138,17 @@ header h1 a:hover {
   padding: 20px;
   margin: 0 auto 35px auto;
   text-align: center;
+  width: 70%;
 }
 
-.question-title {
-  font-size: calc(30px + 1.55vw);
+#main-title.question-title {
+  font-size: calc(16px + 1.55vw);
   padding: 20px;
-  padding-bottom: 50px;
-  margin: 0 auto 35px auto;
-  text-align: center;
+  text-align: initial;
+  width: 70%;
 }
+
+
 
 #sub-title {
   padding: 20px;
@@ -202,6 +205,7 @@ header h1 a:hover {
 .submit-text {
   margin-right: 20px;
   padding: 20px;
+  white-space: nowrap;
 }
 
 .submit-form-input {
@@ -211,7 +215,7 @@ header h1 a:hover {
 
 .timer {
   font-size: calc(22px + 0.55vw);
-  padding-right: 20px;
+  padding-right: 50px;
 }
 
 .timer-row {
@@ -234,6 +238,7 @@ footer {
   flex-wrap: wrap;
   border-top: 3px solid;
   border-radius: 0;
+  margin-top: 9vw;
 }
 
 footer h4 {
