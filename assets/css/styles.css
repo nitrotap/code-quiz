@@ -128,6 +128,10 @@ header h1 a:hover {
   transition: all 0.2s ease;
 }
 
+.high-scores {
+  text-align: left;
+}
+
 #main-title {
   font-size: calc(36px + 1.55vw);
   padding: 20px;

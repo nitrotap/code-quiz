@@ -290,7 +290,7 @@ var highScores = function () {
     subTitleEl.appendChild(submitFormEl);
 
     // when i click submit, save user name and score into localstorage
-    submitFormButtonEl.addEventListener("click", function () {
+    submitFormButtonEl.addEventListener("click", function handler() {
         // read input from input textarea
         playerName = submitFormInputEl.value;
         console.log(playerName);
@@ -312,17 +312,21 @@ var highScores = function () {
             localStorage.setItem("scores", JSON.stringify(scores));
 
             var highScoresEl = document.createElement("div");
-            highScoresEl.className = "";
+            highScoresEl.className = "high-scores";
 
             console.log(scores);
-
-            var strContent = "";
-            for (let i = 0; i < scores.length; i++) {
-                strContent += scores.id;
-            }
             
-            highScoresEl.innerText = JSON.stringify(scores);
+            var text = "Player : Score";
+            var text1 = JSON.stringify(scores, null, '\t');
+            var text = text + text1;
+
+            var text = text.replace(/[{}]/g, ' ');
+            var text = text.replace(/"/g, '   ');
+            var text = text.replace(/,/g, '');
+    
+            highScoresEl.innerText = text;
             subTitleEl.appendChild(highScoresEl);
+            this.removeEventListener("click", handler);
         }
     });
 
