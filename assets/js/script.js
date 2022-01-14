@@ -295,8 +295,8 @@ var highScores = function () {
         playerName = submitFormInputEl.value;
         console.log(playerName);
 
-        scores = {name : playerName, score: score};
-        scoreJSON = JSON.stringify(score);
+        //scoreJSON = JSON.stringify(score);
+        scores = {};
 
         // read from local storage
         var oldScores = localStorage.getItem("scores");
@@ -304,8 +304,10 @@ var highScores = function () {
 
         if (oldScores === null) {
             console.log("no other scores found!");
+
+            scores[playerName] = score;
             localStorage.setItem("scores", JSON.stringify(scores));
-            console.log(localStorage.setItem("scores", JSON.stringify(scores)));
+            // console.log(localStorage.setItem("scores", JSON.stringify(scores)));
         } else {
             console.log("other scores found!");
             var scores = JSON.parse(oldScores);
@@ -315,11 +317,7 @@ var highScores = function () {
             console.log("new array: " + JSON.stringify(scores));
             localStorage.setItem("scores", JSON.stringify(scores));
         }
-
-
-
     });
-
 }
 
 var rightAnswer = function () {
@@ -332,9 +330,6 @@ var wrongAnswer = function () {
     console.log(answers);
 };
 
-var saveAnswer = function () {
-    localStorage.setItem("answers", JSON.stringify(answers));
-    console.log(JSON.stringify(answers));
-};
+
 
 startScreen();

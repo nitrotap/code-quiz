@@ -292,33 +292,29 @@ var highScores = function () {
     // when i click submit, save user name and score into localstorage
     submitFormButtonEl.addEventListener("click", function () {
         // read input from input textarea
-        userName = submitFormInputEl.value;
-        console.log(userName);
+        playerName = submitFormInputEl.value;
+        console.log(playerName);
 
+        scores = {name : playerName, score: score};
+        scoreJSON = JSON.stringify(score);
 
-        var scoreDataObj = {
-            name: userName,
-            score: score,
-        }
+        // read from local storage
+        var oldScores = localStorage.getItem("scores");
+        console.log("old Array: " + oldScores);
 
-
-        // get high scores if it exists in localstorage
-        var scoreData = localStorage.getItem("scores");
-        if (scoreData === null) {
-            console.log("no scores found");
-            scoreData = [];
+        if (oldScores === null) {
+            console.log("no other scores found!");
+            localStorage.setItem("scores", JSON.stringify(scores));
+            console.log(localStorage.setItem("scores", JSON.stringify(scores)));
         } else {
-            console.log("scores are: ")
-            console.log(scoreData);
+            console.log("other scores found!");
+            var scores = JSON.parse(oldScores);
+            console.log(scores);
+            console.log(playerName);
+            scores[playerName] = score;
+            console.log("new array: " + JSON.stringify(scores));
+            localStorage.setItem("scores", JSON.stringify(scores));
         }
-
-        // add new score to array
-        //scoreData.push(userName);
-        //scores.push(score);
-
-        // save array
-        //localStorage.setItem("scores", JSON.stringify(scores));
-
 
 
 
