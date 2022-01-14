@@ -115,19 +115,28 @@ header h1 a:hover {
 .answers button {
   padding: 20px;
   margin: 0 auto 35px auto;
-  font-size: calc(24px + 1.55vw);
-  width: 50%;
+  font-size: calc(16px + 1.55vw);
+  width: 40%;
+}
+
+.answers button:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 15px;
+  text-shadow: none;
+  border: var(--primary-color) solid 3px;
+  transition: all 0.2s ease;
 }
 
 #main-title {
-  font-size: calc(48px + 1.55vw);
+  font-size: calc(36px + 1.55vw);
   padding: 20px;
   margin: 0 auto 35px auto;
   text-align: center;
 }
 
 .question-title {
-  font-size: calc(36px + 1.55vw);
+  font-size: calc(30px + 1.55vw);
   padding: 20px;
   padding-bottom: 50px;
   margin: 0 auto 35px auto;
@@ -137,18 +146,29 @@ header h1 a:hover {
 #sub-title {
   padding: 20px;
   margin: 0 auto 35px auto;
-  font-size: calc(24px + 1.55vw);
+  font-size: calc(20px + 1.55vw);
   text-align: center;
   font-weight: bold;
 }
 
-#start-button, .form-button {
+#start-button,
+.form-button {
   padding: 20px;
   margin: 0 auto 35px auto;
   font-size: calc(24px + 0.55vw);
   display: flex;
   justify-content: center;
   font-weight: bold;
+}
+
+#start-button:hover,
+.form-button:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 15px;
+  text-shadow: none;
+  border: var(--primary-color) solid 3px;
+  transition: all 0.2s ease;
 }
 
 .submit-form {
@@ -164,6 +184,15 @@ header h1 a:hover {
   display: flex;
   justify-content: center;
   font-weight: bold;
+}
+
+.submit-form-button:hover {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 15px;
+  text-shadow: none;
+  border: var(--primary-color) solid 3px;
+  transition: all 0.2s ease;
 }
 
 .submit-text {

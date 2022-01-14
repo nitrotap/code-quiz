@@ -205,7 +205,7 @@ var question4 = function () {
     });
 };
 
-var question5 = function() {
+var question5 = function () {
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -245,7 +245,7 @@ var question5 = function() {
     });
 }
 
-var highScores = function() {
+var highScores = function () {
     event.preventDefault();
     // capture time remaining
     timeScore = time;
@@ -266,7 +266,7 @@ var highScores = function() {
     }
 
     subTitleEl.textContent = "Your final score is: " + score + "\n"
-    + "Your penalty is: " + timePenalty;
+        + "Your penalty is: " + timePenalty;
     titleEl.appendChild(subTitleEl);
 
 
@@ -289,21 +289,33 @@ var highScores = function() {
 
     subTitleEl.appendChild(submitFormEl);
 
-    submitFormButtonEl.addEventListener("click", function() {
+    // when i click submit, save user name and score into localstorage
+    submitFormButtonEl.addEventListener("click", function () {
         // read input from input textarea
         userName = submitFormInputEl.value;
         console.log(userName);
-        // when i click submit, save user name and score into localstorage
 
-        scoreArray = new Array();
+        newObj = {name: userName, score: score};
+        newJSON = JSON.stringify(newObj);
+
+        // read from local storage
+        var oldScores = localStorage.getItem("scores");
+        console.log("old Array: " + oldScores);
+
+        if (oldScores === null) {
+            localStorage.setItem("scores", JSON.stringify(newObj));
+            console.log(localStorage.setItem("scores", JSON.stringify(newObj)));
+            console.log("no other scores found!");
+        } else {
+            var scores = JSON.parse(oldScores);
+            console.log(scores);
+        }
+
 
 
     });
 
 }
-
-
-
 
 var rightAnswer = function () {
     answers.push("right");
