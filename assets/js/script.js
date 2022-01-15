@@ -1,5 +1,8 @@
-var time = 91;
+/* js script file for code quiz
 
+*/
+
+var time = 91;
 var timerEl = document.querySelector("#timer");
 timerEl.className = "timer";
 
@@ -10,6 +13,7 @@ var startButtonEl = document.querySelector("#start-button");
 
 // building answerbox
 answers = new Array();
+
 
 var timer = function () {
     if (time > 0) {
@@ -37,24 +41,26 @@ var startScreen = function () {
     });
 };
 
+var answerStatus = function () {
+    // create div element showing right or wrong answer
+    answerStatusEl = document.createElement("div");
+    console.log(answerStatusEl);
+    answerStatusTextEl = document.createElement("h3");
+    answerStatusTextEl.className = "answer-status";
+    answerStatusEl.appendChild(answerStatusTextEl);
+
+    var text = answers[answers.length - 1];
+    console.log(text);
+    // check answers array for last element
+    answerStatusTextEl.textContent = text;
+
+    console.log(answers[answers.length - 1]);
+    titleEl.appendChild(answerStatusEl);
+}
 
 var question1 = function () {
     console.log("question 1");
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    var answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    var answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    var answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
-
+    answerBox = answerBox();
     titleEl.className = "question-title";
     titleEl.textContent = "Commonly used data types do NOT include:";
     answer1.textContent = "strings";
@@ -62,6 +68,7 @@ var question1 = function () {
     answer3.textContent = "alerts";
     answer4.textContent = "numbers";
     titleEl.appendChild(answerBox);
+
     answer1.addEventListener("click", function () {
         wrongAnswer();
         question2();
@@ -86,20 +93,7 @@ var question1 = function () {
 
 var question2 = function () {
     console.log("question 2");
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    var answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    var answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    var answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
+
     titleEl.textContent =
         "The condition in an if/else statement is enclosed with __________.";
     answer1.textContent = "quotes";
@@ -123,23 +117,11 @@ var question2 = function () {
         wrongAnswer();
         question3();
     });
+    answerStatus();
+
 };
 
 var question3 = function () {
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    var answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    var answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    var answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
     console.log("question 3");
     titleEl.textContent = "Arrays in JavaScript can be used to store __________.";
     answer1.textContent = "numbers and strings";
@@ -163,24 +145,11 @@ var question3 = function () {
         rightAnswer();
         question4();
     });
+    answerStatus();
 };
 
 var question4 = function () {
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    var answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    var answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    var answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
-    console.log("question 3");
+    console.log("question 4");
     titleEl.textContent = "A very useful tool used during development and debugging for printing content to the debugger is: __________.";
     answer1.textContent = "JavaScript";
     answer2.textContent = "terminal/bash";
@@ -203,24 +172,12 @@ var question4 = function () {
         rightAnswer();
         question5();
     });
+    answerStatus();
+
 };
 
 var question5 = function () {
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    var answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    var answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    var answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
-    console.log("question 3");
+    console.log("question 5");
     titleEl.textContent = "String values must be enclosed within __________ when being assigned to variables.";
     answer1.textContent = "commas";
     answer2.textContent = "curly brackets";
@@ -243,6 +200,8 @@ var question5 = function () {
         wrongAnswer();
         highScores();
     });
+    answerStatus();
+
 }
 
 var highScores = function () {
@@ -265,31 +224,17 @@ var highScores = function () {
         score = 0;
     }
 
-    //subTitleEl.textContent = "Your final score is: " + score + "\n"
-   //     + "Your penalty is: " + timePenalty;
+    //subTitleEl.textContent = "Your final score is: " + score + "\n" + "Your penalty is: " + timePenalty;
 
     subTitleEl.textContent = "Your final score is: " + score;
     titleEl.appendChild(subTitleEl);
 
-
-    var submitFormEl = document.createElement("div");
-    submitFormEl.className = "submit-form";
-    var submitFormTextEl = document.createElement("h3");
-    submitFormTextEl.className = "submit-text";
-    submitFormTextEl.textContent = "Enter Initials: ";
-    var submitFormInputEl = document.createElement("input");
-    submitFormInputEl.type = "text";
-    submitFormInputEl.placeholder = "Enter Initials Here."
-    submitFormInputEl.name = "submit-form-input";
-    submitFormInputEl.className = "submit-form-input";
-    var submitFormButtonEl = document.createElement("button");
-    submitFormButtonEl.className = "submit-form-button";
-    submitFormButtonEl.textContent = "Submit";
-    submitFormEl.appendChild(submitFormTextEl);
-    submitFormEl.appendChild(submitFormInputEl);
-    submitFormEl.appendChild(submitFormButtonEl);
+    submitFormEl = submitForm();
 
     subTitleEl.appendChild(submitFormEl);
+
+    answerStatus();
+
 
     // when i click submit, save user name and score into localstorage
     submitFormButtonEl.addEventListener("click", function handler() {
@@ -331,16 +276,10 @@ var highScores = function () {
             submitFormEl.remove();
             subTitleEl.textContent = " High Scores: ";
             subTitleEl.appendChild(highScoresEl);
+            answerStatusEl.remove();
             this.removeEventListener("click", handler);
         }
-
-
-
     });
-
-
-
-
 }
 
 var rightAnswer = function () {
@@ -354,5 +293,43 @@ var wrongAnswer = function () {
 };
 
 
+
+var submitForm = function () {
+    submitFormEl = document.createElement("div");
+    submitFormEl.className = "submit-form";
+    submitFormTextEl = document.createElement("h3");
+    submitFormTextEl.className = "submit-text";
+    submitFormTextEl.textContent = "Enter Initials: ";
+    submitFormInputEl = document.createElement("input");
+    submitFormInputEl.type = "text";
+    submitFormInputEl.placeholder = "Enter Initials Here."
+    submitFormInputEl.name = "submit-form-input";
+    submitFormInputEl.className = "submit-form-input";
+    submitFormButtonEl = document.createElement("button");
+    submitFormButtonEl.className = "submit-form-button";
+    submitFormButtonEl.textContent = "Submit";
+    submitFormEl.appendChild(submitFormTextEl);
+    submitFormEl.appendChild(submitFormInputEl);
+    submitFormEl.appendChild(submitFormButtonEl);
+    return submitFormEl;
+}
+
+var answerBox = function () {
+    answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    answer1 = document.createElement("button");
+    answer1.textContent = "first Answer";
+    answer2 = document.createElement("button");
+    answer2.textContent = "second Answer";
+    answer3 = document.createElement("button");
+    answer3.textContent = "third Answer";
+    answer4 = document.createElement("button");
+    answer4.textContent = "fourth Answer";
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
+    return answerBox;
+}
 
 startScreen();
