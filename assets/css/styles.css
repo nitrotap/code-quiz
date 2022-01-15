@@ -106,6 +106,14 @@ header h1 a:hover {
   transition: all 0.5s ease;
 }
 
+.answer-status {
+  color:hsl(222, 21%, 76%);
+  border-top: hsl(222, 21%, 76%) 3px solid;
+  border-radius: 0px;
+  font-style: italic;
+  margin-top: 35px;
+}
+
 .answers {
   display: flex;
   flex-direction: column;
@@ -117,7 +125,9 @@ header h1 a:hover {
   padding: 20px;
   margin: 0 0 15px 0;
   font-size: calc(16px + 0.55vw);
-  width: 200px;
+  width: 300px;
+  width: 40%;
+  white-space: nowrap;
 }
 
 .answers button:hover {
@@ -127,6 +137,7 @@ header h1 a:hover {
   text-shadow: none;
   border: var(--primary-color) solid 3px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .high-scores {
