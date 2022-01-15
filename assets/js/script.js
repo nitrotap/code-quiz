@@ -2,7 +2,7 @@
 
 */
 
-var time = 91;
+var time = 30;
 var timerEl = document.querySelector("#timer");
 timerEl.className = "timer";
 
@@ -52,6 +52,13 @@ var answerStatus = function () {
     titleEl.appendChild(answerStatusEl);
     return answerStatusEl;
 };
+
+var timeCheck = function () {
+    if (time <= 0) {
+        highScores();
+        score = 0;
+    }
+}
 
 var question1 = function () {
     var answerBox = document.createElement("div");
@@ -131,6 +138,7 @@ var question2 = function () {
         question3();
     });
     answerStatus();
+    timeCheck();
 };
 
 var question3 = function () {
@@ -167,6 +175,7 @@ var question3 = function () {
         question4();
     });
     answerStatus();
+    timeCheck();
 };
 
 var question4 = function () {
@@ -204,6 +213,7 @@ var question4 = function () {
         question5();
     });
     answerStatus();
+    timeCheck();
 };
 
 var question5 = function () {
@@ -241,6 +251,7 @@ var question5 = function () {
         highScores();
     });
     answerStatus();
+    timeCheck();
 };
 
 var highScores = function () {
@@ -384,5 +395,6 @@ var submitForm = function () {
     submitFormEl.appendChild(submitFormButtonEl);
     return submitFormEl;
 };
+
 
 startScreen();
