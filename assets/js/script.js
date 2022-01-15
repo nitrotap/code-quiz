@@ -56,7 +56,7 @@ var answerStatus = function () {
     console.log(answers[answers.length - 1]);
     titleEl.appendChild(answerStatusEl);
     return answerStatusEl;
-}
+};
 
 var question1 = function () {
     console.log("question 1");
@@ -139,7 +139,6 @@ var question2 = function () {
         question3();
     });
     answerStatus();
-
 };
 
 var question3 = function () {
@@ -193,7 +192,8 @@ var question4 = function () {
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
-    titleEl.textContent = "A very useful tool used during development and debugging for printing content to the debugger is: __________.";
+    titleEl.textContent =
+        "A very useful tool used during development and debugging for printing content to the debugger is: __________.";
     answer1.textContent = "1. JavaScript";
     answer2.textContent = "2. terminal/bash";
     answer3.textContent = "3. for loops";
@@ -216,7 +216,6 @@ var question4 = function () {
         question5();
     });
     answerStatus();
-
 };
 
 var question5 = function () {
@@ -234,7 +233,8 @@ var question5 = function () {
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
-    titleEl.textContent = "String values must be enclosed within __________ when being assigned to variables.";
+    titleEl.textContent =
+        "String values must be enclosed within __________ when being assigned to variables.";
     answer1.textContent = "1. commas";
     answer2.textContent = "2. curly brackets";
     answer3.textContent = "3. quotes";
@@ -257,8 +257,7 @@ var question5 = function () {
         highScores();
     });
     answerStatus();
-
-}
+};
 
 var highScores = function () {
     // capture time remaining
@@ -292,7 +291,6 @@ var highScores = function () {
 
     subTitleEl.appendChild(answerStatusEl);
 
-
     // when i click submit, save user name and score into localstorage
     submitFormButtonEl.addEventListener("click", function handler() {
         // read input from input textarea
@@ -324,14 +322,14 @@ var highScores = function () {
             var backButtonEl = document.createElement("button");
             backButtonEl.className = "submit-form-button";
             backButtonEl.textContent = "Back";
-            backButtonEl.addEventListener("click", function() {
+            backButtonEl.addEventListener("click", function () {
                 document.getElementById("home").click();
             });
 
             var clearScoresButtonEl = document.createElement("button");
             clearScoresButtonEl.className = "submit-form-button";
             clearScoresButtonEl.textContent = "Clear High Scores";
-            clearScoresButtonEl.addEventListener("click", function() {
+            clearScoresButtonEl.addEventListener("click", function () {
                 localStorage.clear();
                 highScores();
                 clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
@@ -370,11 +368,8 @@ var highScores = function () {
             submitFormEl.remove();
             subTitleEl.textContent = " High Scores: ";
 
-
             //highScoresOrderedListElement.appendChild(highScoresListEl1);
             // highScoresOrderedListElement.appendChild(highScoresListEl2);
-
-
 
             highScoresEl.appendChild(highScoresOrderedListElement);
             highScoresEl.appendChild(highScoresButtonRowEl);
@@ -383,7 +378,7 @@ var highScores = function () {
             this.removeEventListener("click", handler);
         }
     });
-}
+};
 
 var rightAnswer = function () {
     answers.push("right");
@@ -396,8 +391,6 @@ var wrongAnswer = function () {
     time -= 10;
 };
 
-
-
 var submitForm = function () {
     submitFormEl = document.createElement("div");
     submitFormEl.className = "submit-form";
@@ -406,7 +399,7 @@ var submitForm = function () {
     submitFormTextEl.textContent = "Enter Initials: ";
     submitFormInputEl = document.createElement("input");
     submitFormInputEl.type = "text";
-    submitFormInputEl.placeholder = "Enter Initials Here."
+    submitFormInputEl.placeholder = "Enter Initials Here.";
     submitFormInputEl.name = "submit-form-input";
     submitFormInputEl.className = "submit-form-input";
     submitFormButtonEl = document.createElement("button");
@@ -416,6 +409,6 @@ var submitForm = function () {
     submitFormEl.appendChild(submitFormInputEl);
     submitFormEl.appendChild(submitFormButtonEl);
     return submitFormEl;
-}
+};
 
 startScreen();
