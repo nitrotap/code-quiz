@@ -43,23 +43,17 @@ var startScreen = function () {
 var answerStatus = function () {
     // create div element showing right or wrong answer
     answerStatusEl = document.createElement("div");
-    console.log(answerStatusEl);
     answerStatusTextEl = document.createElement("h3");
     answerStatusTextEl.className = "answer-status";
     answerStatusEl.appendChild(answerStatusTextEl);
-
     var text = answers[answers.length - 1];
-    console.log(text);
     // check answers array for last element
     answerStatusTextEl.textContent = text;
-
-    console.log(answers[answers.length - 1]);
     titleEl.appendChild(answerStatusEl);
     return answerStatusEl;
 };
 
 var question1 = function () {
-    console.log("question 1");
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -102,8 +96,6 @@ var question1 = function () {
 };
 
 var question2 = function () {
-    console.log("question 2");
-
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -142,8 +134,6 @@ var question2 = function () {
 };
 
 var question3 = function () {
-    console.log("question 3");
-
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -180,8 +170,6 @@ var question3 = function () {
 };
 
 var question4 = function () {
-    console.log("question 4");
-
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -219,10 +207,6 @@ var question4 = function () {
 };
 
 var question5 = function () {
-    console.log("question 5");
-
-    question = {};
-
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -295,20 +279,15 @@ var highScores = function () {
     submitFormButtonEl.addEventListener("click", function handler() {
         // read input from input textarea
         playerName = submitFormInputEl.value;
-        console.log(playerName);
         scores = {};
 
         // read from local storage
         var oldScores = localStorage.getItem("scores");
-        console.log("old Array: " + oldScores);
 
         if (oldScores === null) {
-            console.log("no other scores found!");
             scores[playerName] = score;
             localStorage.setItem("scores", JSON.stringify(scores));
-            // console.log(localStorage.setItem("scores", JSON.stringify(scores)));
         } else {
-            console.log("other scores found!");
             scores = JSON.parse(oldScores);
             scores[playerName] = score;
             localStorage.setItem("scores", JSON.stringify(scores));
@@ -345,14 +324,11 @@ var highScores = function () {
             // scores is initial and value. can use for loop
 
             var keyArray = Object.keys(scores); // puts all the keys into an array
-            console.log(keyArray);
 
             // for loop to iterate over the array to get key values
             for (let i = 0; i < keyArray.length; i++) {
                 keyArray2 = keyArray[i]; // iterating over the key
                 keyValue = scores[keyArray2]; // passing key into
-                console.log(keyArray2);
-                console.log(keyValue);
 
                 // use for loop to create elements
                 highScoresListEl = document.createElement("li");
@@ -382,12 +358,10 @@ var highScores = function () {
 
 var rightAnswer = function () {
     answers.push("right");
-    console.log(answers);
 };
 
 var wrongAnswer = function () {
     answers.push("wrong");
-    console.log(answers);
     time -= 10;
 };
 
