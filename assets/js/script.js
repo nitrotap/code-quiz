@@ -346,22 +346,23 @@ var highScores = function () {
             // cannot iterate over an object
             // scores is initial and value. can use for loop
 
-            var testVar = Object.keys(scores); // puts all the keys into an array
-            console.log(testVar);
+            var keyArray = Object.keys(scores); // puts all the keys into an array
+            console.log(keyArray);
 
             // for loop to iterate over the array to get key values
-            for (let i = 0; i < testVar.length; i++) {
-                testVar2 = testVar[i]; // iterating over the key
-                testValue = scores[testVar2]; // passing key into
-                console.log(testVar2);
-                console.log(testValue);
+            for (let i = 0; i < keyArray.length; i++) {
+                keyArray2 = keyArray[i]; // iterating over the key
+                keyValue = scores[keyArray2]; // passing key into
+                console.log(keyArray2);
+                console.log(keyValue);
 
                 // use for loop to create elements
                 highScoresListEl = document.createElement("li");
-                
-                var value = testVar;
-                //highScoresListEl.value = value;
-                // highScoresListEl.innerHTML(testVar2 + ": " + testValue);
+
+                // set the value of the new element to appropriate string
+
+                var value = keyArray2 + ": " + keyValue;
+                highScoresListEl.innerHTML = value;
 
                 highScoresOrderedListElement.appendChild(highScoresListEl);
             }
