@@ -14,7 +14,6 @@ var startButtonEl = document.querySelector("#start-button");
 // building answerbox
 answers = new Array();
 
-
 var timer = function () {
     if (time > 0) {
         time--;
@@ -31,7 +30,7 @@ var countdown = function () {
 var startScreen = function () {
     titleEl.textContent = "Coding Quiz Challenge";
     subTitleEl.textContent =
-        "A simple coding quiz to test your coding knowledge!";
+        "A simple coding quiz to test your coding knowledge! Try to answer the questions within the time limit, but keep in mind - wrong answers will cost you 10 points/seconds!";
     startButtonEl.innerHTML = "Start Quiz";
     startButtonEl.addEventListener("click", function () {
         countdown();
@@ -56,6 +55,7 @@ var answerStatus = function () {
 
     console.log(answers[answers.length - 1]);
     titleEl.appendChild(answerStatusEl);
+    return answerStatusEl;
 }
 
 var question1 = function () {
@@ -73,31 +73,31 @@ var question1 = function () {
 
     titleEl.className = "question-title";
     titleEl.textContent = "Commonly used data types do NOT include:";
-    answer1.textContent = "strings";
-    answer2.textContent = "booleans";
-    answer3.textContent = "alerts";
-    answer4.textContent = "numbers";
+    answer1.textContent = "1. strings";
+    answer2.textContent = "2. booleans";
+    answer3.textContent = "3. alerts";
+    answer4.textContent = "4. numbers";
     titleEl.appendChild(answerBox);
 
     answer1.addEventListener("click", function () {
         wrongAnswer();
         question2();
-        answer1.removeEventListener("click", question1);
+        this.removeEventListener("click", answer1);
     });
     answer2.addEventListener("click", function () {
         wrongAnswer();
         question2();
-        answer2.removeEventListener("click", question1);
+        this.removeEventListener("click", answer2);
     });
     answer3.addEventListener("click", function () {
         rightAnswer();
         question2();
-        answer3.removeEventListener("click", question1);
+        this.removeEventListener("click", answer3);
     });
     answer4.addEventListener("click", function () {
         wrongAnswer();
         question2();
-        answer4.removeEventListener("click", question1);
+        this.removeEventListener("click", answer4);
     });
 };
 
@@ -117,10 +117,10 @@ var question2 = function () {
 
     titleEl.textContent =
         "The condition in an if/else statement is enclosed with __________.";
-    answer1.textContent = "quotes";
-    answer2.textContent = "curly brackets";
-    answer3.textContent = "parenthesis";
-    answer4.textContent = "square brackets";
+    answer1.textContent = "1. quotes";
+    answer2.textContent = "2. curly brackets";
+    answer3.textContent = "3. parenthesis";
+    answer4.textContent = "4. square brackets";
     titleEl.appendChild(answerBox);
     answer1.addEventListener("click", function () {
         wrongAnswer();
@@ -156,10 +156,10 @@ var question3 = function () {
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
     titleEl.textContent = "Arrays in JavaScript can be used to store __________.";
-    answer1.textContent = "numbers and strings";
-    answer2.textContent = "other arrays";
-    answer3.textContent = "booleans";
-    answer4.textContent = "all of the above";
+    answer1.textContent = "1. numbers and strings";
+    answer2.textContent = "2. other arrays";
+    answer3.textContent = "3. booleans";
+    answer4.textContent = "4. all of the above";
     titleEl.appendChild(answerBox);
     answer1.addEventListener("click", function () {
         wrongAnswer();
@@ -194,10 +194,10 @@ var question4 = function () {
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
     titleEl.textContent = "A very useful tool used during development and debugging for printing content to the debugger is: __________.";
-    answer1.textContent = "JavaScript";
-    answer2.textContent = "terminal/bash";
-    answer3.textContent = "for loops";
-    answer4.textContent = "console.log";
+    answer1.textContent = "1. JavaScript";
+    answer2.textContent = "2. terminal/bash";
+    answer3.textContent = "3. for loops";
+    answer4.textContent = "4. console.log";
     titleEl.appendChild(answerBox);
     answer1.addEventListener("click", function () {
         wrongAnswer();
@@ -222,6 +222,8 @@ var question4 = function () {
 var question5 = function () {
     console.log("question 5");
 
+    question = {};
+
     var answerBox = document.createElement("div");
     answerBox.className = "answers";
     var answer1 = document.createElement("button");
@@ -233,10 +235,10 @@ var question5 = function () {
     answerBox.appendChild(answer3);
     answerBox.appendChild(answer4);
     titleEl.textContent = "String values must be enclosed within __________ when being assigned to variables.";
-    answer1.textContent = "commas";
-    answer2.textContent = "curly brackets";
-    answer3.textContent = "quotes";
-    answer4.textContent = "parenthesis";
+    answer1.textContent = "1. commas";
+    answer2.textContent = "2. curly brackets";
+    answer3.textContent = "3. quotes";
+    answer4.textContent = "4. parenthesis";
     titleEl.appendChild(answerBox);
     answer1.addEventListener("click", function () {
         wrongAnswer();
@@ -259,7 +261,6 @@ var question5 = function () {
 }
 
 var highScores = function () {
-    event.preventDefault();
     // capture time remaining
     timeScore = time;
     titleEl.textContent = "All done!";
@@ -289,6 +290,8 @@ var highScores = function () {
 
     answerStatus();
 
+    subTitleEl.appendChild(answerStatusEl);
+
 
     // when i click submit, save user name and score into localstorage
     submitFormButtonEl.addEventListener("click", function handler() {
@@ -315,6 +318,34 @@ var highScores = function () {
             var highScoresEl = document.createElement("div");
             highScoresEl.className = "high-scores";
 
+            var highScoresButtonRowEl = document.createElement("div");
+            highScoresButtonRowEl.className = "flex-row";
+
+            var backButtonEl = document.createElement("button");
+            backButtonEl.className = "submit-form-button";
+            backButtonEl.textContent = "Back";
+            backButtonEl.addEventListener("click", function() {
+                document.getElementById("home").click();
+            });
+
+            var clearScoresButtonEl = document.createElement("button");
+            clearScoresButtonEl.className = "submit-form-button";
+            clearScoresButtonEl.textContent = "Clear High Scores";
+            clearScoresButtonEl.addEventListener("click", function() {
+                localStorage.clear();
+                highScores();
+                clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
+            });
+
+            highScoresButtonRowEl.appendChild(backButtonEl);
+            highScoresButtonRowEl.appendChild(clearScoresButtonEl);
+
+            // high scores list elements - class help
+            var highScoresOrderedListElement = document.createElement("ol");
+
+            var highScoresListEl1 = document.createElement("li");
+            var highScoresListEl2 = document.createElement("li");
+
             console.log(scores);
 
             var text = "";
@@ -326,9 +357,36 @@ var highScores = function () {
             var text = text.replace(/,/g, '');
             var text = text.replace(/:/g, ' - ');
 
-            highScoresEl.innerText = text;
+            highScoresListEl1.textContent = text;
+            highScoresListEl2.textContent = text;
+
+            // cannot iterate over an object
+            // scores is initial and value. can use for loop
+
+            var testVar = Object.keys(scores); // puts all the keys into an array
+            console.log(testVar);
+
+            // for loop to iterate over the keys to get key values
+            for (let i = 0; i < testVar.length; i++) {
+                testVar2 = testVar[i]; // iterating over the key
+                testValue = scores[testVar2]; // passing key into
+
+                // use for loop to create elements
+                console.log(testVar2);
+                console.log(testValue);
+            }
+
             submitFormEl.remove();
             subTitleEl.textContent = " High Scores: ";
+
+
+            highScoresOrderedListElement.appendChild(highScoresListEl1);
+            highScoresOrderedListElement.appendChild(highScoresListEl2);
+
+
+
+            highScoresEl.appendChild(highScoresOrderedListElement);
+            highScoresEl.appendChild(highScoresButtonRowEl);
             subTitleEl.appendChild(highScoresEl);
             answerStatusEl.remove();
             this.removeEventListener("click", handler);
@@ -344,6 +402,7 @@ var rightAnswer = function () {
 var wrongAnswer = function () {
     answers.push("wrong");
     console.log(answers);
+    time -= 10;
 };
 
 
@@ -366,20 +425,6 @@ var submitForm = function () {
     submitFormEl.appendChild(submitFormInputEl);
     submitFormEl.appendChild(submitFormButtonEl);
     return submitFormEl;
-}
-
-var answerBox = function () {
-    var answerBox = document.createElement("div");
-    answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
-    answerBox.appendChild(answer1);
-    answerBox.appendChild(answer2);
-    answerBox.appendChild(answer3);
-    answerBox.appendChild(answer4);
-    return answerBox;
 }
 
 startScreen();

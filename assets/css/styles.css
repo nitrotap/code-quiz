@@ -125,8 +125,7 @@ header h1 a:hover {
   padding: 20px;
   margin: 0 0 15px 0;
   font-size: calc(16px + 0.55vw);
-  width: 300px;
-  width: 40%;
+  width: 50%;
   white-space: nowrap;
 }
 
@@ -204,6 +203,7 @@ header h1 a:hover {
   display: flex;
   justify-content: center;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .submit-form-button:hover {
