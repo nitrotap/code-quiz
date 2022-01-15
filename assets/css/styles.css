@@ -158,7 +158,9 @@ header h1 a:hover {
   width: 70%;
 }
 
-
+#main-title.end-title {
+  font-size: 0px;
+}
 
 #sub-title {
   padding: 20px;
@@ -166,6 +168,7 @@ header h1 a:hover {
   font-size: calc(20px + 1.55vw);
   text-align: center;
   font-weight: bold;
+  width: 80%;
 }
 
 #start-button,

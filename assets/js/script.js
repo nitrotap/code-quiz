@@ -60,7 +60,17 @@ var answerStatus = function () {
 
 var question1 = function () {
     console.log("question 1");
-    answerBox = answerBox();
+    var answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
+
     titleEl.className = "question-title";
     titleEl.textContent = "Commonly used data types do NOT include:";
     answer1.textContent = "strings";
@@ -94,6 +104,17 @@ var question1 = function () {
 var question2 = function () {
     console.log("question 2");
 
+    var answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
+
     titleEl.textContent =
         "The condition in an if/else statement is enclosed with __________.";
     answer1.textContent = "quotes";
@@ -123,6 +144,17 @@ var question2 = function () {
 
 var question3 = function () {
     console.log("question 3");
+
+    var answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
     titleEl.textContent = "Arrays in JavaScript can be used to store __________.";
     answer1.textContent = "numbers and strings";
     answer2.textContent = "other arrays";
@@ -150,6 +182,17 @@ var question3 = function () {
 
 var question4 = function () {
     console.log("question 4");
+
+    var answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
     titleEl.textContent = "A very useful tool used during development and debugging for printing content to the debugger is: __________.";
     answer1.textContent = "JavaScript";
     answer2.textContent = "terminal/bash";
@@ -178,6 +221,17 @@ var question4 = function () {
 
 var question5 = function () {
     console.log("question 5");
+
+    var answerBox = document.createElement("div");
+    answerBox.className = "answers";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answerBox.appendChild(answer1);
+    answerBox.appendChild(answer2);
+    answerBox.appendChild(answer3);
+    answerBox.appendChild(answer4);
     titleEl.textContent = "String values must be enclosed within __________ when being assigned to variables.";
     answer1.textContent = "commas";
     answer2.textContent = "curly brackets";
@@ -315,16 +369,12 @@ var submitForm = function () {
 }
 
 var answerBox = function () {
-    answerBox = document.createElement("div");
+    var answerBox = document.createElement("div");
     answerBox.className = "answers";
-    answer1 = document.createElement("button");
-    answer1.textContent = "first Answer";
-    answer2 = document.createElement("button");
-    answer2.textContent = "second Answer";
-    answer3 = document.createElement("button");
-    answer3.textContent = "third Answer";
-    answer4 = document.createElement("button");
-    answer4.textContent = "fourth Answer";
+    var answer1 = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
