@@ -343,45 +343,35 @@ var highScores = function () {
             // high scores list elements - class help
             var highScoresOrderedListElement = document.createElement("ol");
 
-            var highScoresListEl1 = document.createElement("li");
-            var highScoresListEl2 = document.createElement("li");
-
-            console.log(scores);
-
-            var text = "";
-            var text1 = JSON.stringify(scores, null, '\t');
-            var text = text + text1;
-
-            var text = text.replace(/[{}]/g, ' ');
-            var text = text.replace(/"/g, '   ');
-            var text = text.replace(/,/g, '');
-            var text = text.replace(/:/g, ' - ');
-
-            highScoresListEl1.textContent = text;
-            highScoresListEl2.textContent = text;
-
             // cannot iterate over an object
             // scores is initial and value. can use for loop
 
             var testVar = Object.keys(scores); // puts all the keys into an array
             console.log(testVar);
 
-            // for loop to iterate over the keys to get key values
+            // for loop to iterate over the array to get key values
             for (let i = 0; i < testVar.length; i++) {
                 testVar2 = testVar[i]; // iterating over the key
                 testValue = scores[testVar2]; // passing key into
-
-                // use for loop to create elements
                 console.log(testVar2);
                 console.log(testValue);
+
+                // use for loop to create elements
+                highScoresListEl = document.createElement("li");
+                
+                var value = testVar;
+                //highScoresListEl.value = value;
+                // highScoresListEl.innerHTML(testVar2 + ": " + testValue);
+
+                highScoresOrderedListElement.appendChild(highScoresListEl);
             }
 
             submitFormEl.remove();
             subTitleEl.textContent = " High Scores: ";
 
 
-            highScoresOrderedListElement.appendChild(highScoresListEl1);
-            highScoresOrderedListElement.appendChild(highScoresListEl2);
+            //highScoresOrderedListElement.appendChild(highScoresListEl1);
+            // highScoresOrderedListElement.appendChild(highScoresListEl2);
 
 
 
