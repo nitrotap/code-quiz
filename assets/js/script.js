@@ -1,20 +1,17 @@
 /* js script file for code quiz
-
 */
 
-var time = 50;
-var timerEl = document.querySelector("#timer");
+let time = 50;
+let timerEl = document.querySelector("#timer");
 timerEl.className = "timer";
 
-var titleEl = document.querySelector("#main-title");
-var timerRowEl = document.querySelector("#timer-row");
-var subTitleEl = document.querySelector("#sub-title");
-var startButtonEl = document.querySelector("#start-button");
+let titleEl = document.querySelector("#main-title");
+let subTitleEl = document.querySelector("#sub-title");
+let startButtonEl = document.querySelector("#start-button");
 
-// building answerbox
-answers = new Array();
+answers = [];
 
-var timer = function () {
+const timer = function () {
     if (time > 0) {
         time--;
         timerEl.innerHTML = time + "s";
@@ -23,11 +20,11 @@ var timer = function () {
     }
 };
 
-var countdown = function () {
-    var intervalID = setInterval(timer, 1000);
+const countdown = function () {
+    const intervalID = setInterval(timer, 1000);
 };
 
-var startScreen = function () {
+const startScreen = function () {
     titleEl.textContent = "Coding Quiz Challenge";
     subTitleEl.textContent =
         "A simple coding quiz to test your coding knowledge! Try to answer the questions within the time limit, but keep in mind - wrong answers will cost you 10 points/seconds!";
@@ -40,33 +37,32 @@ var startScreen = function () {
     });
 };
 
-var answerStatus = function () {
+const answerStatus = function () {
     // create div element showing right or wrong answer
     answerStatusEl = document.createElement("div");
     answerStatusTextEl = document.createElement("h3");
     answerStatusTextEl.className = "answer-status";
     answerStatusEl.appendChild(answerStatusTextEl);
-    var text = answers[answers.length - 1];
     // check answers array for last element
-    answerStatusTextEl.textContent = text;
+    answerStatusTextEl.textContent = answers[answers.length - 1];
     titleEl.appendChild(answerStatusEl);
     return answerStatusEl;
 };
 
-var timeCheck = function () {
+const timeCheck = function () {
     if (time <= 0) {
         highScores();
         score = 0;
     }
 }
 
-var question1 = function () {
-    var answerBox = document.createElement("div");
+const question1 = function () {
+    let answerBox = document.createElement("div");
     answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
+    let answer1 = document.createElement("button");
+    let answer2 = document.createElement("button");
+    let answer3 = document.createElement("button");
+    let answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
@@ -102,13 +98,13 @@ var question1 = function () {
     });
 };
 
-var question2 = function () {
-    var answerBox = document.createElement("div");
+const question2 = function () {
+    let answerBox = document.createElement("div");
     answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
+    let answer1 = document.createElement("button");
+    let answer2 = document.createElement("button");
+    let answer3 = document.createElement("button");
+    let answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
@@ -141,13 +137,13 @@ var question2 = function () {
     timeCheck();
 };
 
-var question3 = function () {
-    var answerBox = document.createElement("div");
+const question3 = function () {
+    let answerBox = document.createElement("div");
     answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
+    let answer1 = document.createElement("button");
+    let answer2 = document.createElement("button");
+    let answer3 = document.createElement("button");
+    let answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
@@ -178,13 +174,13 @@ var question3 = function () {
     timeCheck();
 };
 
-var question4 = function () {
-    var answerBox = document.createElement("div");
+const question4 = function () {
+    let answerBox = document.createElement("div");
     answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
+    let answer1 = document.createElement("button");
+    let answer2 = document.createElement("button");
+    let answer3 = document.createElement("button");
+    let answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
@@ -216,13 +212,13 @@ var question4 = function () {
     timeCheck();
 };
 
-var question5 = function () {
-    var answerBox = document.createElement("div");
+const question5 = function () {
+    let answerBox = document.createElement("div");
     answerBox.className = "answers";
-    var answer1 = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
+    let answer1 = document.createElement("button");
+    let answer2 = document.createElement("button");
+    let answer3 = document.createElement("button");
+    let answer4 = document.createElement("button");
     answerBox.appendChild(answer1);
     answerBox.appendChild(answer2);
     answerBox.appendChild(answer3);
@@ -254,23 +250,11 @@ var question5 = function () {
     timeCheck();
 };
 
-var highScores = function () {
+const highScores = function () {
     // capture time remaining
-    timeScore = time;
+    score = time;
     titleEl.textContent = "All done!";
     titleEl.className = "end-title";
-    var score = 0;
-    var timePenalty = 0;
-    for (let i = 0; i < answers.length; i++) {
-        if (answers[i] === "wrong") {
-            timePenalty += 10;
-        }
-    }
-
-    score = timeScore - timePenalty;
-    if (score < 0) {
-        score = 0;
-    }
 
     time = 0;
 
@@ -279,7 +263,7 @@ var highScores = function () {
     subTitleEl.textContent = "Your final score is: " + score;
     titleEl.appendChild(subTitleEl);
 
-    submitFormEl = submitForm();
+    let submitFormEl = submitForm();
 
     subTitleEl.appendChild(submitFormEl);
 
@@ -290,11 +274,11 @@ var highScores = function () {
     // when i click submit, save user name and score into localstorage
     submitFormButtonEl.addEventListener("click", function handler() {
         // read input from input textarea
-        playerName = submitFormInputEl.value;
-        scores = {};
+        let playerName = submitFormInputEl.value;
+        let scores = {};
 
         // read from local storage
-        var oldScores = localStorage.getItem("scores");
+        let oldScores = localStorage.getItem("scores");
 
         if (oldScores === null) {
             scores[playerName] = score;
@@ -304,52 +288,50 @@ var highScores = function () {
             scores[playerName] = score;
             localStorage.setItem("scores", JSON.stringify(scores));
 
-            var highScoresEl = document.createElement("div");
+            let highScoresEl = document.createElement("div");
             highScoresEl.className = "high-scores";
 
-            var highScoresButtonRowEl = document.createElement("div");
+            let highScoresButtonRowEl = document.createElement("div");
             highScoresButtonRowEl.className = "flex-row";
 
-            var backButtonEl = document.createElement("button");
+            let backButtonEl = document.createElement("button");
             backButtonEl.className = "submit-form-button";
             backButtonEl.textContent = "Back";
             backButtonEl.addEventListener("click", function () {
                 document.getElementById("home").click();
             });
 
-            var clearScoresButtonEl = document.createElement("button");
+            let clearScoresButtonEl = document.createElement("button");
             clearScoresButtonEl.className = "submit-form-button";
             clearScoresButtonEl.textContent = "Clear High Scores";
             clearScoresButtonEl.addEventListener("click", function () {
                 localStorage.clear();
-                var high = highScores();
-                console.log("clicked!");
-                //clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
-
+                let high = highScores();
+                // clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
             });
 
             highScoresButtonRowEl.appendChild(backButtonEl);
             highScoresButtonRowEl.appendChild(clearScoresButtonEl);
 
             // high scores list elements - class help
-            var highScoresOrderedListElement = document.createElement("ol");
+            let highScoresOrderedListElement = document.createElement("ol");
 
             // cannot iterate over an object
             // scores is initial and value. can use for loop
 
-            var keyArray = Object.keys(scores); // puts all the keys into an array
+            let keyArray = Object.keys(scores); // puts all the keys into an array
 
             // for loop to iterate over the array to get key values
             for (let i = 0; i < keyArray.length; i++) {
-                keyArray2 = keyArray[i]; // iterating over the key
-                keyValue = scores[keyArray2]; // passing key into
+                let keyArray2 = keyArray[i]; // iterating over the key
+                let keyValue = scores[keyArray2]; // passing key into
 
                 // use for loop to create elements
-                highScoresListEl = document.createElement("li");
+                let highScoresListEl = document.createElement("li");
 
                 // set the value of the new element to appropriate string
 
-                var value = keyArray2 + ": " + keyValue;
+                let value = keyArray2 + ": " + keyValue;
                 highScoresListEl.innerHTML = value;
 
                 highScoresOrderedListElement.appendChild(highScoresListEl);
@@ -370,16 +352,16 @@ var highScores = function () {
     });
 };
 
-var rightAnswer = function () {
+const rightAnswer = function () {
     answers.push("right");
 };
 
-var wrongAnswer = function () {
+const wrongAnswer = function () {
     answers.push("wrong");
     time -= 10;
 };
 
-var submitForm = function () {
+const submitForm = function () {
     submitFormEl = document.createElement("div");
     submitFormEl.className = "submit-form";
     submitFormTextEl = document.createElement("h3");
@@ -399,7 +381,7 @@ var submitForm = function () {
     return submitFormEl;
 };
 
-var highScoresLink = function () {
+const highScoresLink = function () {
     // read input from input textarea
     // playerName = submitFormInputEl.value;
     scores = {};
@@ -418,25 +400,25 @@ var highScoresLink = function () {
         // scores[playerName] = score;
         localStorage.setItem("scores", JSON.stringify(scores));
 
-        var highScoresEl = document.createElement("div");
+        let highScoresEl = document.createElement("div");
         highScoresEl.className = "high-scores";
 
-        var highScoresButtonRowEl = document.createElement("div");
+        let highScoresButtonRowEl = document.createElement("div");
         highScoresButtonRowEl.className = "flex-row";
 
-        var backButtonEl = document.createElement("button");
+        let backButtonEl = document.createElement("button");
         backButtonEl.className = "submit-form-button";
         backButtonEl.textContent = "Back";
         backButtonEl.addEventListener("click", function () {
             document.getElementById("home").click();
         });
 
-        var clearScoresButtonEl = document.createElement("button");
+        let clearScoresButtonEl = document.createElement("button");
         clearScoresButtonEl.className = "submit-form-button";
         clearScoresButtonEl.textContent = "Clear High Scores";
         clearScoresButtonEl.addEventListener("click", function () {
             localStorage.clear();
-            var high = highScoresLink();
+            highScoresLink();
             window.location.reload();
             clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
         });
@@ -445,12 +427,12 @@ var highScoresLink = function () {
         highScoresButtonRowEl.appendChild(clearScoresButtonEl);
 
         // high scores list elements - class help
-        var highScoresOrderedListElement = document.createElement("ol");
+        let highScoresOrderedListElement = document.createElement("ol");
 
         // cannot iterate over an object
         // scores is initial and value. can use for loop
 
-        var keyArray = Object.keys(scores); // puts all the keys into an array
+        let keyArray = Object.keys(scores); // puts all the keys into an array
 
         // for loop to iterate over the array to get key values
         for (let i = 0; i < keyArray.length; i++) {
@@ -462,7 +444,7 @@ var highScoresLink = function () {
 
             // set the value of the new element to appropriate string
 
-            var value = keyArray2 + ": " + keyValue;
+            let value = keyArray2 + ": " + keyValue;
             highScoresListEl.innerHTML = value;
 
             highScoresOrderedListElement.appendChild(highScoresListEl);

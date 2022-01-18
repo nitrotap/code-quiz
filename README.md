@@ -6,6 +6,7 @@ Code quiz is a game that tests your coding knowledge! Using time as a scoring me
 
 <img src="./assets/images/screen-shot.png" style="width: 400px" alt="site screenshot">
 
+![badmath](https://img.shields.io/github/languages/top/nitrotap/code-quiz)
 
 
 ## Acceptance Criteria   
