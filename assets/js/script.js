@@ -2,7 +2,7 @@
 
 */
 
-var time = 30;
+var time = 50;
 var timerEl = document.querySelector("#timer");
 timerEl.className = "timer";
 
@@ -260,7 +260,6 @@ var highScores = function () {
     titleEl.textContent = "All done!";
     titleEl.className = "end-title";
     var score = 0;
-    // score is timeScore - (#ofincorrects)*10
     var timePenalty = 0;
     for (let i = 0; i < answers.length; i++) {
         if (answers[i] === "wrong") {
@@ -272,6 +271,8 @@ var highScores = function () {
     if (score < 0) {
         score = 0;
     }
+
+    time = 0;
 
     //subTitleEl.textContent = "Your final score is: " + score + "\n" + "Your penalty is: " + timePenalty;
 
@@ -321,8 +322,10 @@ var highScores = function () {
             clearScoresButtonEl.textContent = "Clear High Scores";
             clearScoresButtonEl.addEventListener("click", function () {
                 localStorage.clear();
-                highScores();
-                clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
+                var high = highScores();
+                console.log("clicked!");
+                //clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
+
             });
 
             highScoresButtonRowEl.appendChild(backButtonEl);
@@ -395,6 +398,91 @@ var submitForm = function () {
     submitFormEl.appendChild(submitFormButtonEl);
     return submitFormEl;
 };
+
+var highScoresLink = function () {
+    // read input from input textarea
+    // playerName = submitFormInputEl.value;
+    scores = {};
+
+    if (startButtonEl) {
+        startButtonEl.remove();
+    }
+    // read from local storage
+    var oldScores = localStorage.getItem("scores");
+
+    if (oldScores === null) {
+        // scores[playerName] = score;
+        localStorage.setItem("scores", JSON.stringify(scores));
+    } else {
+        scores = JSON.parse(oldScores);
+        // scores[playerName] = score;
+        localStorage.setItem("scores", JSON.stringify(scores));
+
+        var highScoresEl = document.createElement("div");
+        highScoresEl.className = "high-scores";
+
+        var highScoresButtonRowEl = document.createElement("div");
+        highScoresButtonRowEl.className = "flex-row";
+
+        var backButtonEl = document.createElement("button");
+        backButtonEl.className = "submit-form-button";
+        backButtonEl.textContent = "Back";
+        backButtonEl.addEventListener("click", function () {
+            document.getElementById("home").click();
+        });
+
+        var clearScoresButtonEl = document.createElement("button");
+        clearScoresButtonEl.className = "submit-form-button";
+        clearScoresButtonEl.textContent = "Clear High Scores";
+        clearScoresButtonEl.addEventListener("click", function () {
+            localStorage.clear();
+            var high = highScoresLink();
+            window.location.reload();
+            clearScoresButtonEl.removeEventListener("click", clearScoresButtonEl);
+        });
+
+        highScoresButtonRowEl.appendChild(backButtonEl);
+        highScoresButtonRowEl.appendChild(clearScoresButtonEl);
+
+        // high scores list elements - class help
+        var highScoresOrderedListElement = document.createElement("ol");
+
+        // cannot iterate over an object
+        // scores is initial and value. can use for loop
+
+        var keyArray = Object.keys(scores); // puts all the keys into an array
+
+        // for loop to iterate over the array to get key values
+        for (let i = 0; i < keyArray.length; i++) {
+            keyArray2 = keyArray[i]; // iterating over the key
+            keyValue = scores[keyArray2]; // passing key into
+
+            // use for loop to create elements
+            highScoresListEl = document.createElement("li");
+
+            // set the value of the new element to appropriate string
+
+            var value = keyArray2 + ": " + keyValue;
+            highScoresListEl.innerHTML = value;
+
+            highScoresOrderedListElement.appendChild(highScoresListEl);
+        }
+
+        // submitFormEl.remove();
+        subTitleEl.textContent = " High Scores: ";
+
+        //highScoresOrderedListElement.appendChild(highScoresListEl1);
+        // highScoresOrderedListElement.appendChild(highScoresListEl2);
+
+        highScoresEl.appendChild(highScoresOrderedListElement);
+        highScoresEl.appendChild(highScoresButtonRowEl);
+        subTitleEl.appendChild(highScoresEl);
+        // answerStatusEl.remove();
+        // this.removeEventListener("click", handler);
+    }
+}
+
+
 
 
 startScreen();

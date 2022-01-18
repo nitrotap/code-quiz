@@ -170,6 +170,13 @@ header h1 a:hover {
   font-size: 0px;
 }
 
+#question {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
 #sub-title {
   padding: 20px;
   margin: 0 auto 35px auto;
@@ -213,7 +220,6 @@ header h1 a:hover {
   justify-content: center;
   font-weight: bold;
   white-space: nowrap;
-  margin-top: 20px;
 }
 
 .submit-form-button:hover {
