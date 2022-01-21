@@ -1,5 +1,18 @@
 /* js script file for code quiz
+    redo since I made most of it before I learned about objects
 */
+
+firstQuestion = {
+    questionText: "Commonly used data types do NOT include:",
+    wrongAnswer: ["1. strings", "2. booleans", "4. numbers"],
+    rightAnswer: ["3. alerts"]
+}
+
+secondQuestion = {
+    questionText: "The condition in an if/else statement is enclosed with __________.",
+    wrongAnswer: ["1. quotes", "3. parenthesis", "4. square brackets"],
+    rightAnswer: "2. curly brackets"
+}
 
 let time = 50;
 let timerEl = document.querySelector("#timer");
